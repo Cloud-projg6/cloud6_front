@@ -24,9 +24,9 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: dist
-  discard-paths: no
+    - dist/**/*
+    - appspec.yml
+    - deploy-scripts/**/*
   name: BookAppFrontend
 
 cache:

@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/bookapp/frontend
+
+permissions:
+  - object: /var/www/bookapp/frontend
+    pattern: "**"
+    owner: nginx
+    group: nginx
+    mode: 755
+    type:
+      - directory
+  - object: /var/www/bookapp/frontend
+    pattern: "**"
+    owner: nginx
+    group: nginx
+    mode: 644
+    type:
+      - file
+
+hooks:
+  ApplicationStart:
+    - location: deploy-scripts/start-frontend-hook.sh
+      timeout: 300
+      runas: root
