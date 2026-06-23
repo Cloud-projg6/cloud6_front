@@ -1,19 +1,18 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
       nodejs: 20
     commands:
-      - npm install -g @angular/cli@17
-  pre_build:
-    commands:
-      - cd book-manager  # <--- 프로젝트 폴더명으로 변경하세요!
       - npm install
   build:
     commands:
-      - cd book-manager  # <--- 빌드할 때도 같은 폴더로 이동
-      - ng build --configuration production
+      - npm run build
+      - echo "Build completed."
+
 artifacts:
-  base-directory: book-manager/dist  # 빌드 결과물이 생기는 경로
+  base-directory: dist
   files:
     - '**/*'
+  discard-paths: no
