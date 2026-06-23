@@ -10,13 +10,10 @@ phases:
       - npm install
   build:
     commands:
-      - ng build -c production
+      - ng build --configuration production
       - echo "Build completed."
-    finally:
-      - echo This is the finally block execution!
 artifacts:
-  base-directory: dist/my-angular-project
+  base-directory: dist  # 빌드 결과물이 생성되는 상위 폴더
   files:
-    - 'dist/my-anular-project/**/*'
-    - appspec.yml
-    - 'deploy-scripts/**/*'
+    - '**/*'            # dist 하위의 모든 파일
+  discard-paths: no     # 폴더 구조 유지
