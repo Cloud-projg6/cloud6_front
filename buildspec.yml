@@ -13,4 +13,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: cloud6_front
+  base-directory: cloud6_front/cloud6_front/dist
