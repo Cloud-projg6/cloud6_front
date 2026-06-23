@@ -7,13 +7,13 @@ phases:
       - npm install -g @angular/cli@17
   pre_build:
     commands:
+      - cd book-manager  # <--- 프로젝트 폴더명으로 변경하세요!
       - npm install
   build:
     commands:
+      - cd book-manager  # <--- 빌드할 때도 같은 폴더로 이동
       - ng build --configuration production
-      - echo "Build completed."
 artifacts:
-  base-directory: dist  # 빌드 결과물이 생성되는 상위 폴더
+  base-directory: book-manager/dist  # 빌드 결과물이 생기는 경로
   files:
-    - '**/*'            # dist 하위의 모든 파일
-  discard-paths: no     # 폴더 구조 유지
+    - '**/*'
