@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing source dependencies...
+      - npm install
+  pre_build:
+    commands:
+      - echo Ready to build front-end application...
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo Deploying to S3 Bucket...
+      # <자신의-S3-버킷명>을 실제 생성한 프론트엔드 S3 버킷 이름으로 바꾸세요.
+      - aws s3 sync ./build s3://<자신의-S3-버킷명> --delete
+      - echo Invalidating CloudFront cache...
+      # <자신의-CloudFront-배포-ID>를 실제 CloudFront ID로 바꾸세요. (선택사항, 초기 구축 이후 추가해도 됨)
+      - aws cloudfront create-invalidation --distribution-id <자신의-CloudFront-배포-ID> --paths "/*"
+
+artifacts:
+  # S3 호스팅은 CodeBuild 안에서 직접 sync로 올리기 때문에 빌드 결과물을 따로 Pipeline으로 넘길 필요가 없습니다.
+  files:
+    - '**/*'
