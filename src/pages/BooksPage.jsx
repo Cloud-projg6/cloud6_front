@@ -137,7 +137,7 @@ export default function BooksPage() {
           {!isLoading && !error && `총 ${totalElements}권의 도서가 있습니다`}
         </p>
         <Link to={isLoggedIn ? '/books/new' : '/login'} className="btn btn-primary">
-          + 새 도서 등록 test1
+          + 새 도서 등록
         </Link>
       </div>
 
