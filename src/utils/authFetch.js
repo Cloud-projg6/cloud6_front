@@ -1,15 +1,14 @@
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
+
 export async function authFetch(url, options = {}) {
   const token = localStorage.getItem('token')
-
-  const headers = {
-    ...(options.headers || {}),
-  }
+  const headers = { ...(options.headers || {}) }
 
   if (token) {
     headers.Authorization = `Bearer ${token}`
   }
 
-  const response = await fetch(url, {
+  const response = await fetch(`${BASE_URL}${url}`, {
     ...options,
     headers,
   })
@@ -17,7 +16,6 @@ export async function authFetch(url, options = {}) {
   if (response.status === 401 || response.status === 403) {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
-
     if (window.location.pathname !== '/login') {
       window.location.href = '/login'
     }
