@@ -32,7 +32,7 @@ artifacts:
     - deploy-scripts/**/*
   name: BookAppFrontend
   secondary-artifacts:
-    S3Artifact:
+    user-S3Artifact:
       files:
         - '**/*'
       base-directory: dist
