@@ -10,7 +10,7 @@ export async function authFetch(url, options = {}) {
 
   const fullUrl = url.startsWith('http') ? url : `${BASE_URL}${url}`  // 추가
 
-  const response = await fetch(`${BASE_URL}${fullUrl}`, {   // url → fullUrl
+  const response = await fetch(fullUrl, {   // url → fullUrl
     ...options,
     headers,
   })
