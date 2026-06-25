@@ -8,7 +8,9 @@ export async function authFetch(url, options = {}) {
     headers.Authorization = `Bearer ${token}`
   }
 
-  const response = await fetch(`${BASE_URL}${url}`, {
+  const fullUrl = url.startsWith('http') ? url : `${BASE_URL}${url}`  // 추가
+
+  const response = await fetch(`${BASE_URL}${fullurl}`, {   // url → fullUrl
     ...options,
     headers,
   })
