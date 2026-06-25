@@ -28,15 +28,9 @@ phases:
 
 artifacts:
   files:
-    - appspec.yml
-    - deploy-scripts/**/*
+    - '**/*'
+  base-directory: dist
   name: BookAppFrontend
-  secondary-artifacts:
-    user-S3Artifact:
-      files:
-        - '**/*'
-      base-directory: dist
-      name: user-S3Artifact
 
 cache:
   paths:
