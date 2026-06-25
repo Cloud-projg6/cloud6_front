@@ -36,7 +36,7 @@ artifacts:
       files:
         - '**/*'
       base-directory: dist
-      name: S3Artifact
+      name: user-S3Artifact
 
 cache:
   paths:
