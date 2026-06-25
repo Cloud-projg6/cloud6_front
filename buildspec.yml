@@ -22,11 +22,11 @@ phases:
       - echo "Building React application..."
       - npm run build
   
-post_build:
-  commands:
-    - echo "Build completed"
-    - cp appspec.yml dist/
-    - cp -r deploy-scripts dist/
+  post_build:
+    commands:
+      - echo "Build completed"
+      - cp appspec.yml dist/
+      - cp -r deploy-scripts dist/
 
 artifacts:
   files:
