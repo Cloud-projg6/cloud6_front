@@ -27,11 +27,17 @@ phases:
       - echo "Build completed"
 
 artifacts:
-  files:
-    - dist/**/*
-    - appspec.yml
-    - deploy-scripts/**/*
-  name: BookAppFrontend
+  secondary-artifacts:
+    S3Artifact:
+      files:
+        - '**/*'
+      base-directory: dist
+      name: S3Artifact
+    EC2Artifact:
+      files:
+        - appspec.yml
+        - deploy-scripts/**/*
+      name: EC2Artifact
 
 cache:
   paths:
